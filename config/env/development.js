@@ -14,8 +14,7 @@ module.exports = {
 	twitter: {
 		clientID: '0fMRxjGZ89A5DOf1y2cifzMna',
 		clientSecret: 'W4WxO7940WViUgPhQhopqLk3e6n2skP0mvmdXQETtVjixwquLn',
-		callbackURL: '/auth/twitter/callback',
-	   includeEmail: true,
+		callbackURL: '/auth/twitter/callback'
 	},
 	google: {
 		clientID: process.env.GOOGLE_ID || 'APP_ID',

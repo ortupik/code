@@ -45,11 +45,18 @@ app.controller('ProjectController', ['$scope', '$http', '$location', 'Authentica
 				$scope.authentication.user = response;
 				$scope.user = response;
 
-				if(response.provider == "twitter" || response.provider == "facebook"){
+				if(response.provider == "twitter" ){
 					response.name = response.displayName;
 					response.email = response.providerData.email;
 					response.bio = response.providerData.description;
 					response.profile_image_url = response.providerData.profile_image_url;
+					console.log(response)
+					localStorage.setItem('user', JSON.stringify(response));
+				}else if(response.provider == "facebook"){
+					response.name = response.displayName;
+					response.email = response.providerData.email;
+					response.bio = response.providerData.description;
+					response.profile_image_url = response.providerData.picture.data.url;
 					console.log(response)
 					localStorage.setItem('user', JSON.stringify(response));
 				}else{
