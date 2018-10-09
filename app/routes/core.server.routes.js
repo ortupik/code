@@ -33,5 +33,8 @@ module.exports = function(app) {
 	app.get('/test', function (req, res) {
 	  res.render('test.html.ejs');
 	});
+	app.get('/log_out', function (req, res) {
+	  res.render('log_out.html.ejs');
+	});
  
 };

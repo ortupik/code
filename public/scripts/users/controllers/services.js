@@ -35,7 +35,7 @@
 									Authentication.user = null;
 
 									// Redirect to signin page
-									location.href = '/';
+								//	location.href = '/';
 									break;
 								case 403:
 									// Add unauthorized behaviour 

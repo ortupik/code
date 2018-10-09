@@ -34,9 +34,10 @@ var app = angular.module("app", ['ngFileUpload']);
 								case 401:
 									// Deauthenticate the global user
 									Authentication.user = null;
+									console.log(rejection)
 
 									// Redirect to signin page
-									location.href = '/';
+								//	location.href = '/';
 									break;
 								case 403:
 									// Add unauthorized behaviour 

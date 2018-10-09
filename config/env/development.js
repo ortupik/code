@@ -2,19 +2,20 @@
 
 module.exports = {
 	db: 'mongodb://localhost/pixelcreator-dev',
-	port: 8080,
+	port: 8000,
 	app: {
 		title: 'pixelcreator - Development Environment'
 	},
 	facebook: {
 		clientID: '210126882934161',
 		clientSecret: 'f974f5846983a242eb41a65aaa0df679',
-		callbackURL: '/auth/facebook/callback'
+		callbackURL: 'https://pixelcreator.app/auth/facebook/callback'
 	},
 	twitter: {
 		clientID: '0fMRxjGZ89A5DOf1y2cifzMna',
 		clientSecret: 'W4WxO7940WViUgPhQhopqLk3e6n2skP0mvmdXQETtVjixwquLn',
-		callbackURL: '/auth/twitter/callback'
+		callbackURL: '/auth/twitter/callback',
+	   includeEmail: true,
 	},
 	google: {
 		clientID: process.env.GOOGLE_ID || 'APP_ID',

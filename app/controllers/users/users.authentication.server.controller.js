@@ -27,6 +27,7 @@ exports.signup = function(req, res) {
 	// Then save the user 
 	user.save(function(err) {
 		if (err) {
+			console.log(err)
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
@@ -74,7 +75,7 @@ exports.signin = function(req, res, next) {
  */
 exports.signout = function(req, res) {
 	req.logout();
-	res.redirect('/');
+	res.redirect('/log_out');
 };
 
 /**
@@ -82,18 +83,30 @@ exports.signout = function(req, res) {
  */
 exports.oauthCallback = function(strategy) {
 	return function(req, res, next) {
+
+	if(!req.user){
 		passport.authenticate(strategy, function(err, user, redirectURL) {
-			if (err || !user) {
+			console.log(user)
+			if (err || !user) {	
+				console.log("could not auth");
+				console.log(err);
 				return res.redirect('/');
 			}
 			req.login(user, function(err) {
+				
 				if (err) {
-					return res.redirect('/');
+					console.log("could not login")
+					console.log(err)
+				//	return res.redirect('/');
 				}
 
 				return res.redirect( '/dashboard');
 			});
 		})(req, res, next);
+	}else{
+		console.log(req.user)
+		return res.redirect( '/dashboard');
+	}
 	};
 };
 
@@ -103,6 +116,8 @@ exports.oauthCallback = function(strategy) {
 exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 	if (!req.user) {
 		// Define a search query fields
+
+		console.log("USER REQ HERE")
 		var searchMainProviderIdentifierField = 'providerData.' + providerUserProfile.providerIdentifierField;
 		var searchAdditionalProviderIdentifierField = 'additionalProvidersData.' + providerUserProfile.provider + '.' + providerUserProfile.providerIdentifierField;
 
@@ -149,6 +164,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 			}
 		});
 	} else {
+		console.log("USER REQ NOTE HERE")
 		// User is already logged in, join the provider data to the existing user
 		var user = req.user;
 
@@ -163,10 +179,10 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 
 			// And save the user
 			user.save(function(err) {
-				return done(err, user, '/dashboard');
+				return done(err, user);
 			});
 		} else {
-			return done(new Error('User is already connected using this provider'), user);
+			return done(new Error('User is already connected using this provider'), user, '/dashboard');
 		}
 	}
 };

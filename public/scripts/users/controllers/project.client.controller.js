@@ -37,9 +37,30 @@ app.filter('getUserName', function() {
 app.controller('ProjectController', ['$scope', '$http', '$location', 'Authentication',
 	function($scope, $http, $location, Authentication) {
 		$scope.user = Authentication.user;
+		$scope.authentication = Authentication;
 
 		// If user is not signed in then redirect back home
-		if (!$scope.user) location.href = '/';
+		if (!$scope.user){
+			$http.get('/users/me').success(function(response) {
+				$scope.authentication.user = response;
+				$scope.user = response;
+
+				if(response.provider == "twitter" || response.provider == "facebook"){
+					response.name = response.displayName;
+					response.email = response.providerData.email;
+					response.bio = response.providerData.description;
+					response.profile_image_url = response.providerData.profile_image_url;
+					console.log(response)
+					localStorage.setItem('user', JSON.stringify(response));
+				}else{
+					localStorage.setItem('user', JSON.stringify(response));
+				}
+				
+			}).error(function(response) {
+				console.log(response);
+				location.href = "/";
+			});	
+		}
 
 		$scope.createproject = function() {
 			$http.post('/project/create', $scope.project).success(function(response) {
@@ -57,7 +78,6 @@ app.controller('ProjectController', ['$scope', '$http', '$location', 'Authentica
 
 		$http.get('/project/user', $scope.project).success(function(response) {
 			$scope.projects = response;
-			console.log(response)
 		}).error(function(response) {
 			$scope.create_project_error = response.message;
 		});
