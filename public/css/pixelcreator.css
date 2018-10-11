@@ -3477,7 +3477,6 @@ img {
 }
 
 .team-profile-name1-2 {
-  margin-top: 12px;
   font-family: Eina01, sans-serif;
   color: #fff;
   font-size: 20px;
@@ -3499,8 +3498,6 @@ img {
 .user-profile-image {
   display: inline-block;
   overflow: hidden;
-  width: 100px;
-  height: 100px;
   margin-top: -5px;
   margin-right: 10px;
   float: left;

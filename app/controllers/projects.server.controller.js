@@ -11,14 +11,15 @@ var _ = require('lodash'),
  * Get User Projects
  */
 exports.getUserProjects = function(req, res) {
+
 	if(req.user){
 
-       // Init Variables
-		var user_id = req.user._id;
+	 var user_id = mongoose.Types.ObjectId(req.user._id);
 
-		var message = null;
+	 var message = null;
 
 	  Project.aggregate([
+	    	{ $match: { user_id : user_id } },
 		    { $lookup:
 		       {
 		         from: 'users',
@@ -29,11 +30,11 @@ exports.getUserProjects = function(req, res) {
 		     }
 		    ],function(err, projects) {
 			    if (err){
+			    	console.log(err)
 			    	return res.status(400).send({
 						message:err 
 				   });
 			    } 
-			    console.log(JSON.stringify(projects));
 			    res.json(projects); 
 		  });
 

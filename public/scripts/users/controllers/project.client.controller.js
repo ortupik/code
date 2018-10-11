@@ -50,7 +50,6 @@ app.controller('ProjectController', ['$scope', '$http', '$location', 'Authentica
 					response.email = response.providerData.email;
 					response.bio = response.providerData.description;
 					response.profile_image_url = response.providerData.profile_image_url;
-					console.log(response)
 					localStorage.setItem('user', JSON.stringify(response));
 				}else if(response.provider == "facebook"){
 					response.name = response.displayName;
@@ -64,7 +63,6 @@ app.controller('ProjectController', ['$scope', '$http', '$location', 'Authentica
 				}
 				
 			}).error(function(response) {
-				console.log(response);
 				location.href = "/";
 			});	
 		}

@@ -110,9 +110,9 @@ vertical-align: top;
   </div>
   <div class="profile-header">
     <div class="container w-container">
-      <div class="w-row">
+      <div class="w-row" style="padding-bottom: 100px;">
         <div class="w-clearfix w-col w-col-3">
-          <div class="user-profile-image"><img src="{{user.profile_image_url}}" alt="img"></div>
+          <div ><img src="{{user.profile_image_url}}" class="user-profile-image" alt="img"></div>
           <div class="user-info-div">
             <div class="team-profile-name1-2"><a href="#" class="profile-header-link" data-ng-bind="user.name"></a></div>
             <div class="team-user-name-2">@<span  data-ng-bind="user.username"></span></div>
@@ -127,8 +127,8 @@ vertical-align: top;
         </div>
         <div class="w-col w-col-2">
           <div class="external-links-about">
-            <div class="w-clearfix">
-              <div class="subtitle-main">Elsewhere</div><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa612f980d0970001edb583_home3.svg" class="elsewhere-link"><div class="else-where-text">johndoe.com</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa61308dc199e000141000d_twitter.svg" class="elsewhere-link"><div class="else-where-text">@john-dowe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa612fb47bb6800017ba8b3_linkedin.svg" class="elsewhere-link"><div class="else-where-text">@JohnDoe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="images/dribbble-icon.png" class="elsewhere-link big"><div class="else-where-text">/johndoe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="images/behance.png" class="elsewhere-link big"><div class="else-where-text">/johndoe</div></a></div>
+            <div class="w-clearfix" >
+             <!-- <div class="subtitle-main">Elsewhere</div><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa612f980d0970001edb583_home3.svg" class="elsewhere-link"><div class="else-where-text">johndoe.com</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa61308dc199e000141000d_twitter.svg" class="elsewhere-link"><div class="else-where-text">@john-dowe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="https://uploads-ssl.webflow.com/5a7283a49e04c7000168d341/5aa612fb47bb6800017ba8b3_linkedin.svg" class="elsewhere-link"><div class="else-where-text">@JohnDoe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="images/dribbble-icon.png" class="elsewhere-link big"><div class="else-where-text">/johndoe</div></a><a href="#" class="else-where-link1 w-inline-block"><img src="images/behance.png" class="elsewhere-link big"><div class="else-where-text">/johndoe</div></a></div>-->
           </div>
         </div>
       </div>
@@ -164,7 +164,7 @@ vertical-align: top;
   </div>
   <div class="projects-profile-array">
     <div class="container w-container">
-      <div class="project-dark-profile center">
+      <div class="project-dark-profile">
        <!-- Project Card --->
               <div class="col w-col w-col-4" ng-repeat="project in projects">
               <div class="projects-dark">
